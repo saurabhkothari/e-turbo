@@ -1,0 +1,8 @@
+version: 2
+deploy:
+  steps:
+    setupVariables:
+      after:
+        - name: Enforce Networking Policies  
+          run: echo "Hello World Again!"
+          
