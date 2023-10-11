@@ -11,7 +11,7 @@ variable "instance_type" {
 variable "ami_id" {
   description = "Amazon Machine Image (AMI) ID"
   type        = string
-  default     = "ami-039bc0f1f503b7de0" # Replace with your desired AMI ID
+  default     = "ami-067d1e60475437da2" # Replace with your desired AMI ID
 }
 
 variable "instance_count" {
