@@ -37,7 +37,7 @@ deploy:
           env:
             GIT_USER: "saurabhkothari@rocketmail.com"
             GIT_EMAIL: "saurabhkothari@rocketmail.com"
-            TARGET_FILEPATH: "../aws/dev.tfvars"
+            TARGET_FILEPATH: "../aws/dev.tfvars.json"
             BRANCH_PREFIX: "turbo-update-"
             COMMIT_MESSAGE_PREFIX: "turbo initiated changes"
             PR_TITLE_PREFIX: "Update Instance Size"
