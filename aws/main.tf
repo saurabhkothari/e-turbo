@@ -10,6 +10,9 @@ resource "aws_instance" "example_instance" {
   count         = var.instance_count
   ami           = var.ami_id
   instance_type = var.instance_type
+  tags = {
+    Name = var.instance_name  # Custom name for the EC2 instance
+  }
 }
 
 output "instance_id" {
