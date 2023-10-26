@@ -19,3 +19,7 @@ variable "instance_count" {
   type        = number
   default     = 1
 }
+variable "instance_name" {
+  description = "The custom name for the EC2 instance."
+  type        = string
+}
