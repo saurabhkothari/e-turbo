@@ -1,6 +1,4 @@
-terraform {
-  required_version = ">= 0.0.0"
-}
+
 
 resource "google_compute_instance" "vm_instance" {
   count        = var.instance_count
