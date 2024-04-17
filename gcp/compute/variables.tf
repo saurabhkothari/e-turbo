@@ -1,7 +1,4 @@
-instance_count=4
 
-default_machine_type="e2-standard-8"
-[root@terraform-actionscript samples]# cat variables.tf 
 variable "instance_count" {}
 
 
