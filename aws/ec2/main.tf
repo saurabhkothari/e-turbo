@@ -12,6 +12,7 @@ resource "aws_instance" "example_instance" {
   instance_type = var.instance_type
   tags = {
     Name = var.instance_name  # Custom name for the EC2 instance
+    Owner     = "Saurabh Kothari"
   }
 }
 
