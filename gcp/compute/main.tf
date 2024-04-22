@@ -19,7 +19,9 @@ resource "google_compute_instance" "vm_instance" {
     }
   }
   allow_stopping_for_update = true  # Allow stopping for updates
-  tags = ['Owner', 'Saurabh Kothari']
+  labels = {
+    owner      = "Saurabh Kothari"
+  }
 
 }
 
