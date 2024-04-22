@@ -20,7 +20,7 @@ resource "google_compute_instance" "vm_instance" {
   }
   allow_stopping_for_update = true  # Allow stopping for updates
   labels = {
-    owner      = "saurabh kothari"
+    owner      = "saurabhkothari"
   }
 
 }
