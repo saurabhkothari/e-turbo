@@ -1,0 +1,148 @@
+# Registry and repository for Docker images
+# Default is docker/robotshop/image:latest
+image:
+  repo: robotshop
+  version: latest
+  pullPolicy: IfNotPresent
+
+# EUM configuration
+# Provide your key and set the endpoint
+eum:
+  key: null
+  url: https://eum-eu-west-1.instana.io
+  #url: https://eum-us-west-2.instana.io
+
+# Pod Security Policy
+psp:
+  enabled: false
+
+# For the mini ones minikube, minishift set to true
+nodeport: false
+
+# "special" Openshift. Set to true when deploying to any openshift flavour
+openshift: false
+
+ocCreateRoute: false
+
+######################################
+# Affinities for individual workloads
+# set in the following way:
+# <workload>:
+#   affinity: {}
+#   nodeSelector: {}
+#   tolerations: []
+######################################
+
+cart: 
+  resources:
+    limits:
+      cpu: 200m
+      memory: 100Mi
+    requests:
+      cpu: 100m
+      memory: 50Mi      
+
+catalogue: 
+  resources:
+    limits:
+      cpu: 200m
+      memory: 100Mi
+    requests:
+      cpu: 100m
+      memory: 50Mi
+
+dispatch: 
+  resources:
+    limits:
+      cpu: 200m
+      memory: 100Mi
+    requests:
+      cpu: 100m
+      memory: 50Mi
+      
+mongodb: 
+  resources:
+    limits:
+      cpu: 200m
+      memory: 200Mi
+    requests:
+      cpu: 100m
+      memory: 100Mi
+
+mysql:
+  resources:
+    limits:
+      cpu: 200m
+      memory: 1024Mi
+    requests:
+      cpu: 100m
+      memory: 700Mi
+
+payment:
+  resources:
+    limits:
+      cpu: 200m
+      memory: 100Mi
+    requests:
+      cpu: 100m
+      memory: 50Mi
+  # Alternative payment gateway URL
+  # Default is https://www.paypal.com
+  gateway: null
+  #gateway: https://www.worldpay.com
+
+rabbitmq: 
+  resources:
+    limits:
+      cpu: 200m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 256Mi
+
+ratings: 
+  resources:
+    limits:
+      cpu: 200m
+      memory: 100Mi
+    requests:
+      cpu: 100m
+      memory: 50Mi
+
+redis:
+  # Storage class to use with redis statefulset.
+  storageClassName: standard
+  resources:
+    limits:
+      cpu: 200m
+      memory: 100Mi
+    requests:
+      cpu: 100m
+      memory: 50Mi
+
+shipping:
+  resources:
+    limits:
+      cpu: 300m
+      memory: 1000Mi
+    requests:
+      cpu: 100m
+      memory: 500Mi
+
+user: 
+  resources:
+    limits:
+      cpu: 200m
+      memory: 100Mi
+    requests:
+      cpu: 100m
+      memory: 50Mi
+
+web: 
+  resources:
+    limits:
+      cpu: 200m
+      memory: 100Mi
+    requests:
+      cpu: 100m
+      memory: 50Mi

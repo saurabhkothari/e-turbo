@@ -1,0 +1,115 @@
+import requests
+import json
+
+# Dictionary to map variable X to values for limits and requests
+values_mapping = {
+    "cart": {
+        "limits": {"cpu": "200m", "memory": "100Mi"},
+        "requests": {"cpu": "100m", "memory": "50Mi"}
+    },
+    "catalogue": {
+        "limits": {"cpu": "200m", "memory": "100Mi"},
+        "requests": {"cpu": "100m", "memory": "50Mi"}
+    },
+    "dispatch": {
+        "limits": {"cpu": "200m", "memory": "100Mi"},
+        "requests": {"cpu": "100m", "memory": "50Mi"}
+    },
+    "mongodb": {
+        "limits": {"cpu": "200m", "memory": "200Mi"},
+        "requests": {"cpu": "100m", "memory": "100Mi"}
+    },
+    "mysql": {
+        "limits": {"cpu": "200m", "memory": "1024Mi"},
+        "requests": {"cpu": "100m", "memory": "700Mi"}
+    },
+    "payment": {
+        "limits": {"cpu": "200m", "memory": "100Mi"},
+        "requests": {"cpu": "100m", "memory": "50Mi"}
+    },
+    "rabbitmq": {
+        "limits": {"cpu": "200m", "memory": "512Mi"},
+        "requests": {"cpu": "100m", "memory": "256Mi"}
+    },
+    "ratings": {
+        "limits": {"cpu": "200m", "memory": "100Mi"},
+        "requests": {"cpu": "100m", "memory": "50Mi"}
+    },
+    "redis": {
+        "limits": {"cpu": "200m", "memory": "100Mi"},
+        "requests": {"cpu": "100m", "memory": "50Mi"}
+    },
+    "shipping": {
+        "limits": {"cpu": "300m", "memory": "1000Mi"},
+        "requests": {"cpu": "100m", "memory": "500Mi"}
+    },
+    "user": {
+        "limits": {"cpu": "200m", "memory": "100Mi"},
+        "requests": {"cpu": "100m", "memory": "50Mi"}
+    },
+    "web": {
+        "limits": {"cpu": "200m", "memory": "100Mi"},
+        "requests": {"cpu": "100m", "memory": "50Mi"}
+    }
+}
+
+# API endpoint and headers
+url = "https://api.env0.com/configuration"
+headers = {
+    "accept": "application/json",
+    "authorization": "Basic cHJsM3kwYmZ4bmIwZnVtcTprcktjcUZxLWdZeFA3dlRxQ21NNldyX2hnRktPbFJnWg==",
+    "content-type": "application/json"
+}
+
+# Iterate over each variable X
+for variable, values in values_mapping.items():
+    data = [
+        {
+            "scope": "ENVIRONMENT",
+            "type": 0,
+            "scopeId": "1e80b33a-239d-4d54-b592-495b527e98ec",
+            "organizationId": "0b490cb7-f548-42b9-9ea0-acf8bfbf2375",
+            "projectId": "222ad76a-cb2e-4ecc-9e07-bddbcc274d99",
+            "name": f"ENV0_HELM_SET_{variable}.resources.limits.cpu",
+            "value": values["limits"]["cpu"]
+        },
+        {
+            "scope": "ENVIRONMENT",
+            "type": 0,
+            "scopeId": "1e80b33a-239d-4d54-b592-495b527e98ec",
+            "organizationId": "0b490cb7-f548-42b9-9ea0-acf8bfbf2375",
+            "projectId": "222ad76a-cb2e-4ecc-9e07-bddbcc274d99",
+            "name": f"ENV0_HELM_SET_{variable}.resources.limits.memory",
+            "value": values["limits"]["memory"]
+        },
+        {
+            "scope": "ENVIRONMENT",
+            "type": 0,
+            "scopeId": "1e80b33a-239d-4d54-b592-495b527e98ec",
+            "organizationId": "0b490cb7-f548-42b9-9ea0-acf8bfbf2375",
+            "projectId": "222ad76a-cb2e-4ecc-9e07-bddbcc274d99",
+            "name": f"ENV0_HELM_SET_{variable}.resources.requests.cpu",
+            "value": values["requests"]["cpu"]
+        },
+        {
+            "scope": "ENVIRONMENT",
+            "type": 0,
+            "scopeId": "1e80b33a-239d-4d54-b592-495b527e98ec",
+            "organizationId": "0b490cb7-f548-42b9-9ea0-acf8bfbf2375",
+            "projectId": "222ad76a-cb2e-4ecc-9e07-bddbcc274d99",
+            "name": f"ENV0_HELM_SET_{variable}.resources.requests.memory",
+            "value": values["requests"]["memory"]
+        }
+    ]
+    
+    # Convert data to JSON string
+    json_data = json.dumps(data)
+    
+    # Make the POST request to the API endpoint
+    response = requests.post(url, headers=headers, data=json_data)
+    
+    # Print response status and content
+    print(f"Variable: {variable}")
+    print(f"Response Status: {response.status_code}")
+    print(f"Response Content: {response.content}")
+    print("-------------------------")
