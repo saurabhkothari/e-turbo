@@ -1,7 +1,7 @@
 resource "env0_gcp_gke_credentials" "credentials" {
   name           = var.gke_cred_name
   cluster_name   = var.gke_cluster_name
-  cluster_region = "us-central1"
+  compute_region = "us-central1"
 }
 
 data "env0_project" "project" {
